@@ -1,0 +1,77 @@
+<app-nav-app></app-nav-app>
+
+<div class="negro">
+  <div class="container1">
+    <mat-icon  color="primary" (click)="volver()"> keyboard_backspace</mat-icon>
+  </div>
+    <div class="formulario">
+      <h3 class="white">Registrar Cita:</h3>
+      <div>
+        <mat-form-field class="w-100" appearance="fill">
+        <mat-label>Selecciona la fecha</mat-label>
+        <input matInput [matDatepicker]="dp3" [(ngModel)]="fecha1" disabled>
+        <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+        <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+      </mat-form-field>
+      </div>
+      <br>
+      <div>
+        <mat-form-field class="w-100" appearance="fill">
+          <mat-label>Seleccione la hora:</mat-label>
+          <mat-select [(value)]="hora">
+            <mat-option value="8.30 am - 9.00 am">8.30 am - 9.00 am</mat-option>
+            <mat-option value="9.00 am - 9.30 am">9.00 am - 9.30 am</mat-option>
+            <mat-option value="9.30 am - 10.00 am">9.30 am - 10.00 am</mat-option>
+            <mat-option value="10.00 am - 10.30 am">10.00 am - 10.30 am</mat-option>
+            <mat-option value="10.30 am - 11.00 am">10.30 am - 11.00 am</mat-option>
+            <mat-option value="11.00 am - 11.30 am">11.00 am - 11.30 am</mat-option>
+            <mat-option value="11.30 am - 12.00 pm">11.30 am - 12.00 pm</mat-option>
+            <mat-option value="3.00 pm - 3.30 pm">3.00 pm - 3.30 pm</mat-option>
+            <mat-option value="3.30 pm - 4:00 pm">3.30 pm - 4:00 pm</mat-option>
+            <mat-option value="4.00 pm - 4.30 pm">4.00 pm - 4.30 pm</mat-option>
+            <mat-option value="4.30 pm - 5:00 pm">4.30 pm - 5:00 pm</mat-option>
+            <mat-option value="5.00 pm - 5.30 pm">5.00 pm - 5.30 pm</mat-option>
+            <mat-option value="5.30 pm - 6:00 pm">5.30 pm - 6:00 pm</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>      
+      <br>
+      <div class="row">
+        <div class="col-9">
+          <mat-form-field class="w-100">
+            <input matInput [(ngModel)]="dni_Duenio" type="number" placeholder="Ingrese DNI del dueño">
+          </mat-form-field>
+        </div>
+        <div class="col-3">
+          <button mat-raised-button (click)="buscarMascotaporDueno()">Buscar mascota</button>
+        </div>
+      </div>
+      <br>
+      <div class="white" *ngIf="mostrar1masc">
+        <p>Nombre de la mascota:d</p>
+      </div>
+      
+      <div *ngIf="mostrar2mas">
+         <mat-form-field appearance="fill" class="w-100">
+        <mat-label>Seleccione mascota</mat-label>
+        <mat-select [(value)]="mascSelec" >
+          <mat-option *ngFor="let item of masc" [value]="item.id_masc">
+            {{item.nombremasc}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      </div>
+      <br>      
+      <div>
+        <mat-form-field appearance="fill" class="w-100">
+       <mat-label>Seleccione Veterinario</mat-label>
+       <mat-select [(value)]="vetSelec">
+         <mat-option *ngFor="let item of Veterinarios" [value]="item.dni">
+           {{item.nombre}} {{item.apellido}}
+         </mat-option>
+       </mat-select>
+     </mat-form-field>
+     </div>
+      <button mat-raised-button color="primary" (click)="crearCita()">Crear cita</button>
+    </div>
+</div>

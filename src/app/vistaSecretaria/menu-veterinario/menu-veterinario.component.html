@@ -1,0 +1,33 @@
+<app-nav-app></app-nav-app>
+
+<div class="negro">
+    <div class="margen5" *ngFor="let item of Citas">
+        <div class="row">
+            <div class="col-6">
+             Fecha:{{item.fecha}}
+            </div>
+            <div class="col-6">
+             Hora: {{item.hora}}
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-6">
+             Dueño: {{item.id_Cita}}
+            </div>
+            <div class="col-6">
+             Mascota: {{item.id_Cita}}
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-6">
+                <button mat-raised-button color="primary">Ver Historial Clínico</button>
+            </div>
+            <div class="col-6">
+                <button mat-raised-button color="primary">Añadir diagnóstico</button>
+            </div>
+        </div>
+
+    </div>
+</div>

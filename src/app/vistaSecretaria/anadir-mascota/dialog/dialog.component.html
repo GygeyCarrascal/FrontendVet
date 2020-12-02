@@ -1,0 +1,30 @@
+<div class="formulario white" >
+    <h4 class="white">Registrar Dueño</h4>
+    <div>
+      <mat-form-field class="w-100">
+        <input matInput [(ngModel)]="this.dni" type="number" placeholder="Ingrese DNI">
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="w-100">
+        <input matInput [(ngModel)]="this.nombre" type="text" placeholder="Ingrese nombre">
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="w-100">
+        <input matInput [(ngModel)]="this.apellido" type="text" placeholder="Ingrese apellido">
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="w-100">
+        <input matInput [(ngModel)]="this.tel1" type="number" placeholder="Ingrese Teléfono 1">
+      </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field class="w-100">
+          <input matInput [(ngModel)]="this.tel2" type="number" placeholder="Ingrese Teléfono 2">
+        </mat-form-field>
+      </div>
+
+    <button mat-raised-button color="primary" (click)="guardar()">registrar dueño</button>    
+  </div>
