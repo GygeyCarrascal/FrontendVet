@@ -1,7 +1,9 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {DialogComponent} from './dialog/dialog.component'
+import {MascotasService } from './../../servicios/MascotaService/mascotas.service'
 
+import {MatSnackBar} from '@angular/material/snack-bar';
 import { Router, Routes } from '@angular/router';
 
 @Component({
@@ -17,10 +19,13 @@ export class AnadirMascotaComponent implements OnInit {
   alergia=""
   dnidue=""
   raza=""
+  masc=[]
   favoriteSeason:any
 
   constructor(public dialog: MatDialog,
-    public router:Router) { }
+    public router:Router,
+    private mascService:MascotasService,
+    private _snackBar: MatSnackBar) { }
 
 
   ngOnInit(): void {
@@ -42,5 +47,37 @@ export class AnadirMascotaComponent implements OnInit {
     this.router.navigate(['menSec']);
   }
 
-}
+  guardarmascota(){
+    this.obtenercitasdehoy()
+    const id=this.masc.length+1;
+    const nuevo={
+      id_masc:id.toString() ,
+      nombremasc:this.mascnombre,
+      dni_duen:parseInt(this.dni_duenno),
+      raza:this.raza,
+      añodenac:parseInt(this.annonac),
+      alergias:this.alergia
+    }
+    console.log(nuevo)
+    this.mascService.crearMascota(nuevo).subscribe(data => {      
+      console.log(data);
+      this.limpiar();
+     });
+  }
 
+  obtenercitasdehoy(){
+    this.mascService.getCitasdehoy().subscribe(data => {
+      this.masc = data.mascota;
+    });
+  }
+
+  limpiar(){
+   this.dni_duenno=""
+  this.mascnombre=""
+  this.annonac=""
+  this.alergia=""
+  this.dnidue=""
+  this.raza=""
+  }
+
+}

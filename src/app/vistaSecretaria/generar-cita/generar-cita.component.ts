@@ -75,12 +75,21 @@ export class GenerarCitaComponent implements OnInit {
     this.citaServ.getCitasdehoy().subscribe(data => {
       this.Citas = data.empl;
       console.log(this.Citas);
+      this.limpiar()
     });
   }
 
 
   volver(){
     this.router.navigate(['menSec']);
+  }
+
+  limpiar(){
+    this.hora="",
+    this.dni_Duenio="",
+    this.vetSelec="",
+    this.dni_Duenio="",
+    this.mascSelec=""
   }
   
 }
